@@ -1,0 +1,272 @@
+/* =========================================================
+   DESIGN TOKENS
+   Toutes les couleurs et polices du site sont définies ici,
+   une seule fois. Si tu veux changer une couleur, tu la
+   changes ici et elle change partout sur le site.
+   ========================================================= */
+:root {
+  --paper: #faf7f0;      /* fond principal, couleur "papier" */
+  --paper-soft: #f1ebdd; /* fond légèrement plus foncé (footer, cartes) */
+  --ink: #1c1b18;        /* texte principal, presque noir */
+  --ink-soft: #57544b;   /* texte secondaire, gris chaud */
+  --accent: #0380fd;     /* rouge encre, LA seule couleur vive du site */
+  --line: #1c1b18;       /* bordures "trait d'encrage" */
+
+  --font-display: "Bebas Neue", "Archivo Black", sans-serif;
+  --font-body: "Work Sans", -apple-system, sans-serif;
+
+  --gutter: clamp(1.2rem, 3vw, 2.4rem); /* espace qui s'adapte à l'écran */
+}
+
+/* =========================================================
+   RESET DE BASE
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px, plus facile à calculer */
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+.site-header {
+  padding: var(--gutter);
+  border-bottom: 3px solid var(--line);
+}
+
+.site-header .brand {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  letter-spacing: 0.02em;
+}
+
+.site-header .brand span {
+  color: var(--accent);
+}
+
+.site-header .tagline {
+  color: var(--ink-soft);
+  font-size: 1.5rem;
+  max-width: 60ch;
+  margin-top: 0.4rem;
+}
+
+/* =========================================================
+   PAGE D'ACCUEIL — grille "planche de BD" avec les 4 membres
+   ========================================================= */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px; /* le gap fin + le fond noir dessous créent l'effet "gouttière d'encrage" */
+  background: var(--line);
+  border: 3px solid var(--line);
+  margin: var(--gutter);
+}
+
+.team-card {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.team-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover img {
+  transform: scale(1.05);
+}
+
+.team-card .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.4rem var(--gutter);
+  border-top: 3px solid var(--accent);
+}
+
+.team-card .caption .name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: 0.02em;
+}
+
+.team-card .caption .role {
+  color: var(--paper-soft);
+  font-size: 1.3rem;
+}
+
+/* =========================================================
+   PAGE PROFIL — bio + galerie de travaux
+   ========================================================= */
+.back-link {
+  display: inline-block;
+  margin: var(--gutter);
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--ink-soft);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.profile-hero {
+  display: grid;
+  grid-template-columns: 0.5fr;
+  gap: var(--gutter);
+  padding: 0 var(--gutter) var(--gutter);
+  border-bottom: 3px solid var(--line);
+}
+
+.profile-hero .portrait {
+  aspect-ratio: 1 / 1;
+  border: 3px solid var(--line);
+  overflow: hidden;
+}
+
+.profile-hero .portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-hero .intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.4rem);
+  line-height: 0.95;
+}
+
+.profile-hero .intro .role {
+  color: var(--accent);
+  font-size: 1.6rem;
+  margin: 0.6rem 0 1.6rem;
+}
+
+.profile-hero .intro p {
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+
+.profile-hero .intro p + p {
+  margin-top: 1rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.skills li {
+  list-style: none;
+  border: 1px solid var(--ink);
+  padding: 0.4rem 1rem;
+  font-size: 1.3rem;
+}
+
+.work-gallery {
+  padding: var(--gutter);
+}
+
+.work-gallery h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 1.6rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+}
+
+.work-grid figure {
+  border: 2px solid var(--line);
+}
+
+.work-grid figcaption {
+  padding: 0.8rem 1rem;
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  border-top: 2px solid var(--line);
+}
+
+/* =========================================================
+   PIED DE PAGE
+   ========================================================= */
+.site-footer {
+  padding: var(--gutter);
+  background: var(--paper-soft);
+  border-top: 3px solid var(--line);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+/* =========================================================
+   RESPONSIVE — c'est ici que le site s'adapte au mobile
+   ========================================================= */
+
+/* Tablette : la galerie de travaux passe à 2 colonnes */
+@media (max-width: 900px) {
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-hero {
+    grid-template-columns: 220px 1fr;
+    align-items: start;
+  }
+}
+
+/* Mobile : tout passe en une seule colonne */
+@media (max-width: 640px) {
+  .team-grid {
+    grid-template-columns: 1fr; /* la grille 2x2 devient 1 colonne */
+  }
+
+  .team-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .profile-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
